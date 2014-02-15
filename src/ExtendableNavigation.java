@@ -55,15 +55,8 @@ public class ExtendableNavigation extends Application {
 
 	@FXML
 	void initialize() {
-		double widthInitial = 200;
-		double heightInitial = 200;
 		clipRect = new Rectangle();
-		clipRect.setWidth(widthInitial);
-		clipRect.setHeight(0);
-		clipRect.translateYProperty().set(heightInitial);
-		extendableNavigationPane.setClip(clipRect);
-		extendableNavigationPane.translateYProperty().set(heightInitial);
-		extendableNavigationPane.prefHeightProperty().set(0);
+		clipRect.setWidth(extendableNavigationPane.getPrefWidth());
 
 		Image imageNavButton1 = new Image(getClass().getResourceAsStream("16px-Asclepius_staff.svg.png"));
 		navButton1.setGraphic(new ImageView(imageNavButton1));
@@ -81,47 +74,56 @@ public class ExtendableNavigation extends Application {
 		navButton4.setGraphic(new ImageView(imageNavButton4));
 		navButton4.setContentDisplay(ContentDisplay.TOP);
 
+		hidePane();
 	}
 
 	@FXML
 	public void toggleExtendableSearch() {
 
-		clipRect.setWidth(extendableNavigationPane.getWidth());
-
 		if (navigationCompletelyVisible) {
 
-			System.out.println("Hding pane ... ");
-
-			navigationCompletelyVisible = false;
-
-			// Animation for hiding the pane..
-			Timeline timelineUp = new Timeline();
-
-			final KeyValue kvUp1 = new KeyValue(clipRect.heightProperty(), 55);
-			final KeyValue kvUp2 = new KeyValue(extendableNavigationPane.translateYProperty(), 10);
-
-			final KeyFrame kfUp = new KeyFrame(Duration.millis(200), kvUp1, kvUp2);
-			timelineUp.getKeyFrames().add(kfUp);
-			timelineUp.play();
+			hidePane();
 		} else {
 
-			System.out.println("Showing pane ... ");
-
-			navigationCompletelyVisible = true;
-
-			// Animation for showing the pane completely
-			Timeline timelineDown = new Timeline();
-
-			final KeyValue kvDwn1 = new KeyValue(clipRect.heightProperty(), extendableNavigationPane.getHeight());
-			final KeyValue kvDwn2 = new KeyValue(clipRect.translateYProperty(), 0);
-			final KeyValue kvDwn3 = new KeyValue(extendableNavigationPane.translateYProperty(), 0);
-
-			final KeyFrame kfDwn = new KeyFrame(Duration.millis(100), createBouncingEffect(extendableNavigationPane.getHeight()), kvDwn1, kvDwn2,
-					kvDwn3);
-			timelineDown.getKeyFrames().add(kfDwn);
-
-			timelineDown.play();
+			showPane();
 		}
+	}
+
+	@FXML
+	private void showPane() {
+		System.out.println("Showing pane ... ");
+
+		navigationCompletelyVisible = true;
+
+		// Animation for showing the pane completely
+		Timeline timelineDown = new Timeline();
+
+		final KeyValue kvDwn1 = new KeyValue(clipRect.heightProperty(), extendableNavigationPane.getHeight());
+		final KeyValue kvDwn2 = new KeyValue(clipRect.translateYProperty(), 0);
+		final KeyValue kvDwn3 = new KeyValue(extendableNavigationPane.translateYProperty(), 0);
+
+		final KeyFrame kfDwn = new KeyFrame(Duration.millis(100), createBouncingEffect(extendableNavigationPane.getHeight()), kvDwn1, kvDwn2,
+				kvDwn3);
+		timelineDown.getKeyFrames().add(kfDwn);
+
+		timelineDown.play();
+	}
+
+	@FXML
+	private void hidePane() {
+		System.out.println("Hding pane ... ");
+
+		navigationCompletelyVisible = false;
+
+		// Animation for hiding the pane..
+		Timeline timelineUp = new Timeline();
+
+		final KeyValue kvUp1 = new KeyValue(clipRect.heightProperty(), 55);
+		final KeyValue kvUp2 = new KeyValue(extendableNavigationPane.translateYProperty(), 10);
+
+		final KeyFrame kfUp = new KeyFrame(Duration.millis(200), kvUp1, kvUp2);
+		timelineUp.getKeyFrames().add(kfUp);
+		timelineUp.play();
 	}
 
 	private EventHandler<ActionEvent> createBouncingEffect(double height) {
