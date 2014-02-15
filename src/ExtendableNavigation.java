@@ -36,6 +36,8 @@ public class ExtendableNavigation extends Application {
 
 	private Rectangle clipRect;
 
+	private boolean navigationCompletelyVisible = false;
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -86,45 +88,36 @@ public class ExtendableNavigation extends Application {
 
 		clipRect.setWidth(extendableNavigationPane.getWidth());
 
-		if (clipRect.heightProperty().get() != 0) {
+		if (navigationCompletelyVisible) {
 
 			System.out.println("Hding pane ... ");
+
+			navigationCompletelyVisible = false;
 
 			// Animation for hiding the pane..
 			Timeline timelineUp = new Timeline();
 
-			// Animation of sliding the search pane up, implemented via
-			// clipping.
-			final KeyValue kvUp1 = new KeyValue(clipRect.heightProperty(), 0);
-			final KeyValue kvUp2 = new KeyValue(clipRect.translateYProperty(), -extendableNavigationPane.getHeight());
+			final KeyValue kvUp1 = new KeyValue(clipRect.heightProperty(), 55);
+			final KeyValue kvUp2 = new KeyValue(extendableNavigationPane.translateYProperty(), 10);
 
-			// The actual movement of the search pane. This makes the table
-			// grow.
-			final KeyValue kvUp4 = new KeyValue(extendableNavigationPane.prefHeightProperty(), 0);
-			final KeyValue kvUp3 = new KeyValue(extendableNavigationPane.translateYProperty(), extendableNavigationPane.getHeight());
-
-			final KeyFrame kfUp = new KeyFrame(Duration.millis(200), kvUp1, kvUp2, kvUp3, kvUp4);
+			final KeyFrame kfUp = new KeyFrame(Duration.millis(200), kvUp1, kvUp2);
 			timelineUp.getKeyFrames().add(kfUp);
 			timelineUp.play();
 		} else {
 
 			System.out.println("Showing pane ... ");
 
+			navigationCompletelyVisible = true;
+
 			// Animation for showing the pane completely
 			Timeline timelineDown = new Timeline();
 
-			// Animation for sliding the search pane down. No change in size,
-			// just making the visible part of the pane
-			// bigger.
 			final KeyValue kvDwn1 = new KeyValue(clipRect.heightProperty(), extendableNavigationPane.getHeight());
 			final KeyValue kvDwn2 = new KeyValue(clipRect.translateYProperty(), 0);
-
-			// Growth of the pane.
-			final KeyValue kvDwn4 = new KeyValue(extendableNavigationPane.prefHeightProperty(), extendableNavigationPane.getHeight());
 			final KeyValue kvDwn3 = new KeyValue(extendableNavigationPane.translateYProperty(), 0);
 
-			final KeyFrame kfDwn = new KeyFrame(Duration.millis(200), createBouncingEffect(extendableNavigationPane.getHeight()), kvDwn1, kvDwn2,
-					kvDwn3, kvDwn4);
+			final KeyFrame kfDwn = new KeyFrame(Duration.millis(100), createBouncingEffect(extendableNavigationPane.getHeight()), kvDwn1, kvDwn2,
+					kvDwn3);
 			timelineDown.getKeyFrames().add(kfDwn);
 
 			timelineDown.play();
