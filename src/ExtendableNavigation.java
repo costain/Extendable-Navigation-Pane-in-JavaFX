@@ -36,8 +36,6 @@ public class ExtendableNavigation extends Application {
 
 	private Rectangle clipRect;
 
-	private boolean navigationCompletelyVisible = false;
-
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -78,22 +76,8 @@ public class ExtendableNavigation extends Application {
 	}
 
 	@FXML
-	public void toggleExtendableSearch() {
-
-		if (navigationCompletelyVisible) {
-
-			hidePane();
-		} else {
-
-			showPane();
-		}
-	}
-
-	@FXML
 	private void showPane() {
 		System.out.println("Showing pane ... ");
-
-		navigationCompletelyVisible = true;
 
 		// Animation for showing the pane completely
 		Timeline timelineDown = new Timeline();
@@ -112,8 +96,6 @@ public class ExtendableNavigation extends Application {
 	@FXML
 	private void hidePane() {
 		System.out.println("Hding pane ... ");
-
-		navigationCompletelyVisible = false;
 
 		// Animation for hiding the pane..
 		Timeline timelineUp = new Timeline();
