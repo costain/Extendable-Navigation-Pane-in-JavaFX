@@ -60,24 +60,17 @@ public class ExtendableNavigation extends Application {
 	void initialize() {
 		clipRect = new Rectangle();
 		clipRect.setWidth(extendableNavigationPane.getPrefWidth());
-
-		Image imageNavButton1 = new Image(getClass().getResourceAsStream("16px-Asclepius_staff.svg.png"));
-		navButton1.setGraphic(new ImageView(imageNavButton1));
-		navButton1.setContentDisplay(ContentDisplay.TOP);
-
-		Image imageNavButton2 = new Image(getClass().getResourceAsStream("32px-Simple_crossed_circle.svg.png"));
-		navButton2.setGraphic(new ImageView(imageNavButton2));
-		navButton2.setContentDisplay(ContentDisplay.TOP);
-
-		Image imageNavButton3 = new Image(getClass().getResourceAsStream("32px-Sinnbild_Autobahnkreuz.svg.png"));
-		navButton3.setGraphic(new ImageView(imageNavButton3));
-		navButton3.setContentDisplay(ContentDisplay.TOP);
-
-		Image imageNavButton4 = new Image(getClass().getResourceAsStream("32px-Yin_yang.svg.png"));
-		navButton4.setGraphic(new ImageView(imageNavButton4));
-		navButton4.setContentDisplay(ContentDisplay.TOP);
-
+		setIcon(navButton1, "16px-Asclepius_staff.svg.png");
+		setIcon(navButton2, "32px-Simple_crossed_circle.svg.png");
+		setIcon(navButton3, "32px-Sinnbild_Autobahnkreuz.svg.png");
+		setIcon(navButton4, "32px-Yin_yang.svg.png");
 		hidePane();
+	}
+
+	private void setIcon(Button button, String name) {
+		Image image = new Image(getClass().getResourceAsStream(name));
+		button.setGraphic(new ImageView(image));
+		button.setContentDisplay(ContentDisplay.TOP);
 	}
 
 	@FXML
