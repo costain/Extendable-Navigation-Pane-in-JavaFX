@@ -11,10 +11,10 @@
   <children>
     <AnchorPane fx:id="extendableNavigationPane" layoutX="129.0" layoutY="335.0" minHeight="64.0" onMouseEntered="#showPane" onMouseExited="#hidePane" prefHeight="64.0" prefWidth="371.0">
       <children>
-        <Button fx:id="navButton1" layoutX="35.0" layoutY="19.0" mnemonicParsing="false" style="" styleClass="navigation-button" text="Button" />
-        <Button fx:id="navButton2" layoutX="103.0" layoutY="18.0" mnemonicParsing="false" styleClass="navigation-button" text="Button" />
-        <Button fx:id="navButton3" layoutX="172.0" layoutY="30.0" mnemonicParsing="false" styleClass="navigation-button" text="Button" />
-        <Button fx:id="navButton4" layoutX="241.0" layoutY="18.0" mnemonicParsing="false" styleClass="navigation-button" text="Button" />
+        <Button fx:id="navButton1" layoutX="35.0" layoutY="19.0" mnemonicParsing="false" style="" styleClass="navigation-button" text="Medic Stuff" />
+        <Button fx:id="navButton2" layoutX="103.0" layoutY="18.0" mnemonicParsing="false" styleClass="navigation-button" text="Cross Stuff" />
+        <Button fx:id="navButton3" layoutX="172.0" layoutY="30.0" mnemonicParsing="false" styleClass="navigation-button" text="Highway Stuff" />
+        <Button fx:id="navButton4" layoutX="248.0" layoutY="18.0" mnemonicParsing="false" styleClass="navigation-button" text="Peace, man!" />
       </children>
     </AnchorPane>
   </children>

@@ -46,7 +46,7 @@ public class ExtendableNavigation extends Application {
 
 		Scene scene = new Scene(root, 600, 400);
 
-		stage.setTitle("Extendable search pane demo");
+		stage.setTitle("Extendable navigation pane demo");
 		stage.setScene(scene);
 		stage.show();
 	}
