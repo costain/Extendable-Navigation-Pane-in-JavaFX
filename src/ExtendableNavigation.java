@@ -19,6 +19,11 @@ import javafx.util.Duration;
 
 public class ExtendableNavigation extends Application {
 
+	private static final int deltaXNavButton1 = 20;
+	private static final int deltaXNavButton2 = 10;
+	private static final int deltaXNavButton3 = -10;
+	private static final int deltaXNavButton4 = -20;
+
 	@FXML
 	private AnchorPane extendableNavigationPane;
 
@@ -85,11 +90,26 @@ public class ExtendableNavigation extends Application {
 		final KeyValue kvDwn1 = new KeyValue(clipRect.heightProperty(), extendableNavigationPane.getHeight());
 		final KeyValue kvDwn2 = new KeyValue(clipRect.translateYProperty(), 0);
 		final KeyValue kvDwn3 = new KeyValue(extendableNavigationPane.translateYProperty(), 0);
-
 		final KeyFrame kfDwn = new KeyFrame(Duration.millis(100), createBouncingEffect(extendableNavigationPane.getHeight()), kvDwn1, kvDwn2,
 				kvDwn3);
-		timelineDown.getKeyFrames().add(kfDwn);
 
+		// Animation for moving button 1
+		final KeyValue kvB1 = new KeyValue(navButton1.translateXProperty(), -deltaXNavButton1);
+		final KeyFrame kfB1 = new KeyFrame(Duration.millis(200), kvB1);
+
+		// Animation for moving button 2
+		final KeyValue kvB2 = new KeyValue(navButton2.translateXProperty(), -deltaXNavButton2);
+		final KeyFrame kfB2 = new KeyFrame(Duration.millis(200), kvB2);
+
+		// Animation for moving button 3
+		final KeyValue kvB3 = new KeyValue(navButton3.translateXProperty(), -deltaXNavButton3);
+		final KeyFrame kfB3 = new KeyFrame(Duration.millis(200), kvB3);
+
+		// Animation for moving button 1
+		final KeyValue kvB4 = new KeyValue(navButton4.translateXProperty(), -deltaXNavButton4);
+		final KeyFrame kfB4 = new KeyFrame(Duration.millis(200), kvB4);
+
+		timelineDown.getKeyFrames().addAll(kfDwn, kfB1, kfB2, kfB3, kfB4);
 		timelineDown.play();
 	}
 
@@ -102,9 +122,22 @@ public class ExtendableNavigation extends Application {
 
 		final KeyValue kvUp1 = new KeyValue(clipRect.heightProperty(), 55);
 		final KeyValue kvUp2 = new KeyValue(extendableNavigationPane.translateYProperty(), 10);
-
 		final KeyFrame kfUp = new KeyFrame(Duration.millis(200), kvUp1, kvUp2);
-		timelineUp.getKeyFrames().add(kfUp);
+
+		// Animation for moving button 1
+		final KeyValue kvB1 = new KeyValue(navButton1.translateXProperty(), deltaXNavButton1);
+		final KeyFrame kfB1 = new KeyFrame(Duration.millis(200), kvB1);
+
+		final KeyValue kvB2 = new KeyValue(navButton2.translateXProperty(), deltaXNavButton2);
+		final KeyFrame kfB2 = new KeyFrame(Duration.millis(200), kvB2);
+
+		final KeyValue kvB3 = new KeyValue(navButton3.translateXProperty(), deltaXNavButton3);
+		final KeyFrame kfB3 = new KeyFrame(Duration.millis(200), kvB3);
+
+		final KeyValue kvB4 = new KeyValue(navButton4.translateXProperty(), deltaXNavButton4);
+		final KeyFrame kfB4 = new KeyFrame(Duration.millis(200), kvB4);
+
+		timelineUp.getKeyFrames().addAll(kfUp, kfB1, kfB2, kfB3, kfB4);
 		timelineUp.play();
 	}
 

@@ -8,16 +8,13 @@
     -fx-graphic-text-gap: 0px;
     -icons-color: gray;
     -fx-text-fill: gray;
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.4) , 6, 0.0 , 0 , 2 );
 }
  
 .navigation-button:pressed:hover{
     -icons-color: black;
     -fx-text-fill: black;
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
  
 .navigation-button:hover{
     -fx-text-fill: red;
-    
 }
