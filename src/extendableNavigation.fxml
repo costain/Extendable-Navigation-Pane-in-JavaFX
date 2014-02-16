@@ -11,10 +11,10 @@
   <children>
     <AnchorPane fx:id="extendableNavigationPane" layoutX="129.0" layoutY="335.0" minHeight="64.0" onMouseEntered="#showPane" onMouseExited="#hidePane" prefHeight="64.0" prefWidth="371.0">
       <children>
-        <Button fx:id="navButton1" layoutX="53.0" layoutY="19.0" mnemonicParsing="false" style="" styleClass="navigation-button" text="Medic Stuff" />
-        <Button fx:id="navButton2" layoutX="114.0" layoutY="18.0" mnemonicParsing="false" styleClass="navigation-button" text="Cross Stuff" />
-        <Button fx:id="navButton3" layoutX="168.0" layoutY="30.0" mnemonicParsing="false" styleClass="navigation-button" text="Highway Stuff" />
-        <Button fx:id="navButton4" layoutX="241.0" layoutY="18.0" mnemonicParsing="false" styleClass="navigation-button" text="Peace, man!" />
+        <Button fx:id="navButton1" layoutX="53.0" layoutY="19.0" mnemonicParsing="false" onAction="#selectPane1" style="" styleClass="navigation-button" text="Medic Stuff" />
+        <Button fx:id="navButton2" layoutX="114.0" layoutY="18.0" mnemonicParsing="false" onAction="#selectPane2" styleClass="navigation-button" text="Cross Stuff" />
+        <Button fx:id="navButton3" layoutX="168.0" layoutY="30.0" mnemonicParsing="false" onAction="#selectPane3" styleClass="navigation-button" text="Highway Stuff" />
+        <Button fx:id="navButton4" layoutX="241.0" layoutY="18.0" mnemonicParsing="false" onAction="#selectPane4" styleClass="navigation-button" text="Peace, man!" />
       </children>
     </AnchorPane>
   </children>

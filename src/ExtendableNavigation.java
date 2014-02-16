@@ -10,9 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -41,6 +44,8 @@ public class ExtendableNavigation extends Application {
 
 	private Rectangle clipRect;
 
+	private DropShadow dropShadowForSelectedPane;
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -50,6 +55,7 @@ public class ExtendableNavigation extends Application {
 		Parent root = FXMLLoader.load(getClass().getResource("extendableNavigation.fxml"));
 
 		Scene scene = new Scene(root, 600, 400);
+		scene.getStylesheets().add("my.css");
 
 		stage.setTitle("Extendable navigation pane demo");
 		stage.setScene(scene);
@@ -65,6 +71,8 @@ public class ExtendableNavigation extends Application {
 		setIcon(navButton3, "32px-Sinnbild_Autobahnkreuz.svg.png");
 		setIcon(navButton4, "32px-Yin_yang.svg.png");
 		hidePane();
+
+		dropShadowForSelectedPane = new DropShadow(BlurType.THREE_PASS_BOX, Color.RED, 7, 0.2, 0, 1);
 	}
 
 	private void setIcon(Button button, String name) {
@@ -132,6 +140,41 @@ public class ExtendableNavigation extends Application {
 
 		timelineUp.getKeyFrames().addAll(kfUp, kfB1, kfB2, kfB3, kfB4);
 		timelineUp.play();
+	}
+
+	@FXML
+	private void selectPane1() {
+		System.out.println("Selecting pane 1");
+		deselectAllPanes();
+		navButton1.setEffect(dropShadowForSelectedPane);
+	}
+
+	@FXML
+	private void selectPane2() {
+		System.out.println("Selecting pane 2");
+		deselectAllPanes();
+		navButton2.setEffect(dropShadowForSelectedPane);
+	}
+
+	@FXML
+	private void selectPane3() {
+		System.out.println("Selecting pane 3");
+		deselectAllPanes();
+		navButton3.setEffect(dropShadowForSelectedPane);
+	}
+
+	@FXML
+	private void selectPane4() {
+		System.out.println("Selecting pane 4");
+		deselectAllPanes();
+		navButton4.setEffect(dropShadowForSelectedPane);
+	}
+
+	private void deselectAllPanes() {
+		navButton1.setEffect(null);
+		navButton2.setEffect(null);
+		navButton3.setEffect(null);
+		navButton4.setEffect(null);
 	}
 
 	private EventHandler<ActionEvent> createBouncingEffect(double height) {
