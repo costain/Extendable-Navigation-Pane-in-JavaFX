@@ -6,12 +6,10 @@
     -fx-font-size: 0.9em;
     -fx-background-color: transparent;
     -fx-graphic-text-gap: 0px;
-    -icons-color: gray;
     -fx-text-fill: gray;
 }
  
 .navigation-button:pressed:hover{
-    -icons-color: black;
     -fx-text-fill: black;
 }
  
