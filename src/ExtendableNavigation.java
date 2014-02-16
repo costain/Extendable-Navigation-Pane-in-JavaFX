@@ -54,7 +54,7 @@ public class ExtendableNavigation extends Application {
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("extendableNavigation.fxml"));
 
-		Scene scene = new Scene(root, 600, 400);
+		Scene scene = new Scene(root, 600, 200);
 		scene.getStylesheets().add("my.css");
 
 		stage.setTitle("Extendable navigation pane demo");
